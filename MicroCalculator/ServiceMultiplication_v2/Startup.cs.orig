@@ -1,0 +1,99 @@
+﻿using System;
+using System.ComponentModel.Design;
+using System.Linq;
+using System.Threading.Tasks;
+using CalculationRequestParser;
+using FluentScheduler;
+using HttpCalculatorClient;
+using LoggerAdapter;
+using Microsoft.AspNet.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using ServiceFinder;
+
+namespace ServiceMultiplication_v2
+{
+    using ServiceBootstrapper;
+
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.Add(new ServiceDescriptor(typeof(ILoggerAdapter), typeof(LoggerAdapter.LoggerAdapter), ServiceLifetime.Scoped));
+            services.AddMvc();
+            services.Add(new ServiceDescriptor(typeof(ICalculatorServiceFinder), typeof(CalculatorServiceFinder), ServiceLifetime.Transient));
+            services.Add(new ServiceDescriptor(typeof(IServiceContainer), typeof(ServiceContainer), ServiceLifetime.Singleton));
+            services.Add(new ServiceDescriptor(typeof(ICalculatorHttpClient), typeof(HttpCalculatorClientImplementation), ServiceLifetime.Scoped));
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseIISPlatformHandler();
+            app.UseMvc();
+            CultureSetter.CultureThreadSetter.SetCultureThread();
+        }
+
+        public static void Main(string[] args)
+        {
+<<<<<<< HEAD
+            var calculatorServiceFinder = new CalculatorServiceFinder();
+            var findtask = calculatorServiceFinder.Find("addition", "2.0");
+=======
+            var builder = new ConfigurationBuilder();
+            builder.AddCommandLine(args);
+            var config = builder.Build();
+
+            var calculatorServiceFinder = new CalculatorServiceFinder(new HttpCalculatorClientImplementation());
+            var findtask = calculatorServiceFinder.FindByCalculatorOperation(CalculationOperation.Addition, "2.0");
+>>>>>>> 0291939681d1da7a72fa05ce738699de7b2f097b
+            Task.WaitAll(findtask);
+            if (findtask.Result.Count == 0)
+            {
+                Console.WriteLine("No addition 2.0 services available - quitting.");
+                return;
+            }
+            TaskManager.Initialize(new Multiplication20Registry());
+
+<<<<<<< HEAD
+            ServiceBootstrapper.Main("multiplication", "2.0", args);            
+=======
+            using (var application = new WebHostBuilder(config)
+                .UseServer("Microsoft.AspNet.Server.WebListener")
+                .Build()
+                .Start())
+            {
+                var registrator = new ServiceRegistrator(args);
+                registrator.Register(CalculationOperation.Multiplication, "2.0");
+                Console.WriteLine("Started the multiplication v2 server..");
+                Console.WriteLine("Press any key to stop the server");
+                Console.ReadLine();
+            }
+>>>>>>> 0291939681d1da7a72fa05ce738699de7b2f097b
+        }
+    }
+
+    public class Multiplication20Registry : Registry
+    {
+        public Multiplication20Registry()
+        {
+            Schedule<Multiplication20Task>()
+                .NonReentrant()
+                .ToRunNow()
+                .AndEvery(5).Seconds();
+        }
+    }
+
+    public class Multiplication20Task: ITask
+    {
+        public async void Execute()
+        {
+            var calculatorServiceFinder = new CalculatorServiceFinder(new HttpCalculatorClientImplementation());
+            var findtask = await calculatorServiceFinder.FindByCalculatorOperation(CalculationOperation.Addition, "2.0");
+            if (!findtask.Any())
+            {
+                Console.WriteLine("No addition 2.0 running, panic mode on!!!!1111oneoneone");
+                Environment.Exit(0);
+            }
+
+        }
+    }
+}

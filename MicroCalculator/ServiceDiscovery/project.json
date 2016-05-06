@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0-*",
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "FluentScheduler": "3.1.46",
+    "ServiceBase": "1.0.0-*",
+    "ServicesContainer": "1.0.0-*",
+    "HttpCalculatorClient": "1.0.0-*"
+  },
+
+    "commands": {
+        "run": "run server.urls=http://localhost:55000",
+        "web": "Microsoft.AspNet.Server.Kestrel",
+        "self": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:55000"
+    },
+
+  "frameworks": {
+    "dnx451": { }
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules"
+  ],
+  "publishExclude": [
+    "**.user",
+    "**.vspscc",
+    "logs"
+  ]
+}

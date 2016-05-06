@@ -1,0 +1,12 @@
+﻿{
+    "version": "1.0.0-*",
+    "description": "LoggerAdapter Class Library",
+    "authors": [ "jaros" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+
+    "frameworks": {
+        "net451": { }
+    }
+}

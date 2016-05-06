@@ -1,0 +1,63 @@
+<<<<<<< HEAD
+﻿using System.ComponentModel.Design;
+=======
+﻿using System;
+using System.ComponentModel.Design;
+using CalculationRequestParser;
+using HttpCalculatorClient;
+>>>>>>> 0291939681d1da7a72fa05ce738699de7b2f097b
+using LoggerAdapter;
+using Microsoft.AspNet.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using ServiceFinder;
+
+namespace ServiceDivision_v2
+{
+    using ServiceBootstrapper;
+
+    public class Startup
+    {
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+            services.Add(new ServiceDescriptor(typeof(ILoggerAdapter), typeof(LoggerAdapter.LoggerAdapter), ServiceLifetime.Scoped));
+            services.Add(new ServiceDescriptor(typeof(ICalculatorServiceFinder), typeof(CalculatorServiceFinder), ServiceLifetime.Transient));
+            services.Add(new ServiceDescriptor(typeof(IServiceContainer), typeof(ServiceContainer), ServiceLifetime.Singleton));
+            services.Add(new ServiceDescriptor(typeof(ICalculatorHttpClient), typeof(HttpCalculatorClientImplementation), ServiceLifetime.Scoped));
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseIISPlatformHandler();
+            app.UseMvc();
+            CultureSetter.CultureThreadSetter.SetCultureThread();
+
+        }
+
+<<<<<<< HEAD
+        public static void Main(string[] args) => ServiceBootstrapper.Main("division", "2.0", args);        
+=======
+        public static void Main(string[] args)
+        {
+            var builder = new ConfigurationBuilder();
+            builder.AddCommandLine(args);
+            var config = builder.Build();
+
+            using (var application = new WebHostBuilder(config)
+                .UseServer("Microsoft.AspNet.Server.WebListener")
+                .Build()
+                .Start())
+            {
+                var registrator = new ServiceRegistrator(args);
+                registrator.Register(CalculationOperation.Division, "2.0");
+                Console.WriteLine("Started the division v2 server..");
+                Console.WriteLine("Press any key to stop the server");
+                Console.ReadLine();
+            }
+        }
+>>>>>>> 0291939681d1da7a72fa05ce738699de7b2f097b
+    }
+}

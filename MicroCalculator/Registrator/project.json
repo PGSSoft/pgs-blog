@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "description": "Registrator Class Library",
+  "authors": [ "jaros" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+    "frameworks": {
+        "net451": { }       
+    },
+  "dependencies": {
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+    "CalculatorOperation": "1.0.0-*",
+    "Microsoft.Net.Http": "2.0.20710"
+  }
+}

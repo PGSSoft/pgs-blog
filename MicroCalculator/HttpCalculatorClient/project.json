@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "description": "HttpCalculatorClient Class Library",
+  "authors": [ "jaros" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+    "frameworks": {
+        "net451": {
+        }
+    },
+    "dependencies": {
+        "CalculatorOperation": "1.0.0-*",
+        "Extensions": "1.0.0-*",
+        "FluentScheduler": "3.1.46",
+        "Microsoft.Net.Http": "2.0.20710",
+        "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+    }
+}

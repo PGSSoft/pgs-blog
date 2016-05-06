@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "description": "ServiceFinder Class Library",
+  "authors": [ "jaros" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+    "frameworks": {
+        "net451": {
+            "dependencies": {
+            }
+        }
+    },
+    "dependencies": {
+        "CalculatorOperation": "1.0.0-*",
+        "HttpCalculatorClient": "1.0.0-*"
+    }
+}

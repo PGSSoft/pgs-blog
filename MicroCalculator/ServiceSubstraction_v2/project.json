@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0-*",
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+    "dependencies": {
+        "ServiceBase": "1.0.0-*"
+    },
+
+    "commands": {
+        "run": "run server.urls=http://localhost:56200",
+        "self": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:55400",
+        "web": "Microsoft.AspNet.Server.Kestrel"
+    },
+
+  "frameworks": {
+    "dnx451": { }
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules"
+  ],
+  "publishExclude": [
+    "**.user",
+    "**.vspscc",
+    "logs"
+  ]
+}

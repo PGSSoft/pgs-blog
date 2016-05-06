@@ -1,0 +1,139 @@
+﻿@using CalculationRequestParser
+<div class="row">
+    <button class="nocss-version btn btn-default btn-lg" data-version="1.0">1.0</button>
+    <button class="nocss-version btn btn-default btn-lg" data-version="2.0">2.0</button>
+</div>
+<div class="row">
+    <div class="col-lg-9">
+        <form>
+            <div class="form-group">
+                <label for="formula">Formula</label>
+                <input type="text" name="formula" class="form-control nocss-formula" />
+                <input type="hidden" name="version" class="form-control nocss-version" />
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-2 col-lg-offset-1 panel-body nocss-result">0</div>
+</div>
+<div class="row">
+    <div class="row">
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="1">1</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="2">2</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="3">3</span>
+        <span class="col-lg-offset-1 col-lg-1 btn btn-lg btn-default nocss-backspace"><</span>
+        
+        <span class="col-lg-1 btn btn-lg btn-default nocss-operator nocss-operator-@CalculationOperation.Addition.ToString()" data-button-value="+">+</span>
+    </div>
+    <div class="row">
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="4">4</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="5">5</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="6">6</span>
+        <span class="col-lg-offset-1 col-lg-1 btn btn-lg btn-default nocss-clear ">x</span>
+        <span class="col-lg-1 btn btn-lg btn-default nocss-operator nocss-operator-@CalculationOperation.Substraction.ToString()" data-button-value="-">-</span>
+    </div>
+    <div class="row">
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="7">7</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="8">8</span>
+        <span class="col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="9">9</span>
+        <span class="col-lg-offset-1 col-lg-1 btn btn-lg btn-default nocss-operator" data-button-value=".">.</span>
+        <span class="col-lg-1 btn btn-lg btn-default nocss-operator nocss-operator-@CalculationOperation.Multiplication.ToString()" data-button-value="*">*</span>
+    </div>
+    <div class="row">
+        <span class="col-lg-offset-3 col-lg-3 btn btn-lg btn-default nocss-operator" data-button-value="0">0</span>
+        <span class="col-lg-offset-4 col-lg-1 btn btn-lg btn-primary nocss-calculate">=</span>
+        <span class="col-lg-1 btn btn-lg btn-default nocss-operator nocss-operator-@CalculationOperation.Division.ToString()" data-button-value="/">/</span>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var onOperatorClick = function (e) {
+        var button = $(e.target);
+        var operator = button.data("button-value");
+        var formula = $(".nocss-formula");
+        formula.val(formula.val() + operator);
+    }
+
+    var onBackspaceClick = function () {
+        var formula = $(".nocss-formula");
+        var value = formula.val();
+        formula.val(value.substring(0, value.length - 1));
+    };
+    var onClearClick = function () {
+        var formula = $(".nocss-formula");
+        formula.val("");
+    };
+
+    var onSuccessOperationAvailability = function(r) {
+        $(".nocss-operator").removeAttr("disabled", "").removeClass("btn-danger");
+        $(r).each(function(idx, item) {
+            if (!item.Available) {
+                var classToDisable = ".nocss-operator-" + item.Operation;
+                $(classToDisable).attr("disabled", "disabled").addClass("btn-danger");
+            }
+        });
+    }
+    var onErrorOperationAvailability = function(r, status) {
+        alert("Ojeju: " + r);
+    }
+
+    var onVersionClick = function (e) {
+        e.preventDefault();
+        $(".nocss-version").removeClass("btn-info");
+        var button = $(e.target);
+        button.addClass("btn-info");
+        $(".form-control.nocss-version").val(button.data("version"));
+
+        var ajaxOptions = {
+            method: "GET",
+            url: "/ChecksOperationIsAvailable",
+            data: {
+                version:button.data("version")
+            },
+            success: onSuccessOperationAvailability,
+            error: onErrorOperationAvailability
+        };
+        $.ajax(ajaxOptions);
+    }
+
+    var onSuccessCalculation = function (r, s) {
+        $(".nocss-result").text(r);
+    };
+    var onErrorCalculation = function(r, s) {
+        alert(r + "\n" + s);
+    };
+
+    var onCalculateClick = function () {
+        //$(".btn").addClass("disabled");
+        //$(".nocss-operator").off("click");
+        //$(".nocss-backspace").on("click");
+        //$(".nocss-clear").on("click");
+        //$(".nocss-calculate").on("click");
+
+        var calculatorFormula = $(".form-control.nocss-formula").val();
+        var calculatorVersion = $(".form-control.nocss-version").val();
+
+        var ajaxOptions = {
+            method: "POST",
+            url: '/calculator',
+            data: {
+                input: calculatorFormula,
+                version: calculatorVersion
+            },
+            success: onSuccessCalculation,
+            error: onErrorCalculation
+        };
+        $.ajax(ajaxOptions);
+
+    };
+
+    var onDocumentReady = function () {
+        $(".nocss-operator").on("click", onOperatorClick);
+        $(".nocss-backspace").on("click", onBackspaceClick);
+        $(".nocss-clear").on("click", onClearClick);
+        $(".nocss-calculate").on("click", onCalculateClick);
+        $(".nocss-version").on("click", onVersionClick);
+    }
+    $(document).ready(onDocumentReady);
+</script>

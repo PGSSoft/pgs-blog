@@ -1,0 +1,12 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ServicesContainer Class Library",
+  "authors": [ "jaroslaw" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "frameworks": {
+    "net451": { }
+  }
+}

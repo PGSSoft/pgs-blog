@@ -1,0 +1,19 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Log4netLogger Class Library",
+  "authors": [ "Tomasz" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+      "dependencies": {
+        "log4net": "2.0.5"
+      }
+    }
+  },
+  "dependencies": {
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+  }
+}

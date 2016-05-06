@@ -1,0 +1,45 @@
+{
+    "version": "1.0.0-*",
+    "compilationOptions": {
+        "emitEntryPoint": true
+    },
+
+    "dependencies": {
+        "LoggerAdapter": "1.0.0-*",
+        "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
+        "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+        "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-rc1-final",
+        "ServiceFinder": "1.0.0-*",
+        "ServicesContainer": "1.0.0-*",
+        "CultureSetter": "1.0.0-*",
+<<<<<<< HEAD
+        "ServiceBootstrapper": "1.0.0-*"
+=======
+        "HttpCalculatorClient": "1.0.0-*",
+        "CalculatorOperation": "1.0.0-*"
+>>>>>>> 0291939681d1da7a72fa05ce738699de7b2f097b
+    },
+
+    "commands": {
+        "run": "run server.urls=http://localhost:55400",
+        "self": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:55200",
+        "web": "Microsoft.AspNet.Server.Kestrel"
+    },
+
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {
+            }
+        },
+    },
+
+    "exclude": [
+        "wwwroot",
+        "node_modules"
+    ],
+    "publishExclude": [
+        "**.user",
+        "**.vspscc"
+    ]
+}

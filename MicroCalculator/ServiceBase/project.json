@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ServiceBase Class Library",
+  "authors": [ "Tomasz" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "frameworks": {
+    "net451": { }
+  },
+
+  "dependencies": {
+    "ServiceBootstrapper": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
+    "CultureSetter": "1.0.0-*",
+    "Log4netLogger": "1.0.0-*",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-rc1-final"
+  }
+}

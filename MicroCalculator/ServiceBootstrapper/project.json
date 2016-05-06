@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ServiceBootstrapper Class Library",
+  "authors": [ "Tomasz" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+    }
+  },
+  "dependencies": {
+    "Microsoft.AspNet.Hosting": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.CommandLine": "1.0.0-rc1-final",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+    "Registrator": "1.0.0-*",
+    "CalculatorOperation": "1.0.0-*"
+  }
+}
