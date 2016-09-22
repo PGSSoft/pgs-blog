@@ -1,0 +1,33 @@
+
+<div>
+    <h2><span translate="analyzerApp.searchCriteria.detail.title">Search Criteria</span> {{vm.searchCriteria.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="analyzerApp.searchCriteria.keyWord">Key Word</span></dt>
+        <dd>
+            <span>{{vm.searchCriteria.keyWord}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.searchCriteria.mustHaveWord">Must Have Word</span></dt>
+        <dd>
+            <span>{{vm.searchCriteria.mustHaveWord}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.searchCriteria.excludedWord">Excluded Word</span></dt>
+        <dd>
+            <span>{{vm.searchCriteria.excludedWord}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.searchCriteria.searchProfile">Search Profile</span></dt>
+        <dd>
+            <a ui-sref="search-profile-detail({id:vm.searchCriteria.searchProfileId})">{{vm.searchCriteria.searchProfileId}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

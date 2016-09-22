@@ -1,0 +1,33 @@
+
+<div>
+    <h2><span translate="analyzerApp.result.detail.title">Result</span> {{vm.result.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="analyzerApp.result.classification">Classification</span></dt>
+        <dd>
+            <span translate="{{'analyzerApp.Classification.' + vm.result.classification}}">{{vm.result.classification}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.result.isTrainingData">Is Training Data</span></dt>
+        <dd>
+            <span>{{vm.result.isTrainingData}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.result.document">Document</span></dt>
+        <dd>
+            <a ui-sref="document-detail({id:vm.result.documentId})">{{vm.result.documentId}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="analyzerApp.result.searchProfile">Search Profile</span></dt>
+        <dd>
+            <a ui-sref="search-profile-detail({id:vm.result.searchProfileId})">{{vm.result.searchProfileId}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

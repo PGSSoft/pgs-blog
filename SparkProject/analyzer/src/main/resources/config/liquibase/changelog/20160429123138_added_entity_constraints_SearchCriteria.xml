@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity SearchCriteria.
+    -->
+    <changeSet id="20160429123138-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="search_profile_id"
+                                 baseTableName="search_criteria"
+                                 constraintName="fk_searchcriteria_searchprofile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="search_profile"/>
+
+    </changeSet>
+</databaseChangeLog>

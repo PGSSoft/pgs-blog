@@ -1,0 +1,26 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "searchCriteria",
+            "otherEntityName": "searchCriteria",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "searchProfile"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        }
+    ],
+    "changelogDate": "20160429121059",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "search_profile",
+    "pagination": "no"
+}

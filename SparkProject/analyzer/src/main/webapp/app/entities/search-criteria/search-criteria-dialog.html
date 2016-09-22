@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySearchCriteriaLabel" translate="analyzerApp.searchCriteria.home.createOrEditLabel">Create or edit a Search Criteria</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.searchCriteria.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.searchCriteria.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="analyzerApp.searchCriteria.keyWord" for="field_keyWord">Key Word</label>
+            <input type="text" class="form-control" name="keyWord" id="field_keyWord"
+                    ng-model="vm.searchCriteria.keyWord"
+                    required ng-maxlength="255" />
+            <div ng-show="editForm.keyWord.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.keyWord.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.keyWord.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="analyzerApp.searchCriteria.mustHaveWord" for="field_mustHaveWord">Must Have Word</label>
+            <input type="text" class="form-control" name="mustHaveWord" id="field_mustHaveWord"
+                    ng-model="vm.searchCriteria.mustHaveWord"
+                    ng-maxlength="255" />
+            <div ng-show="editForm.mustHaveWord.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mustHaveWord.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="analyzerApp.searchCriteria.excludedWord" for="field_excludedWord">Excluded Word</label>
+            <input type="text" class="form-control" name="excludedWord" id="field_excludedWord"
+                    ng-model="vm.searchCriteria.excludedWord"
+                    ng-maxlength="255" />
+            <div ng-show="editForm.excludedWord.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.excludedWord.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="analyzerApp.searchCriteria.searchProfile" for="field_searchProfile">Search Profile</label>
+            <select class="form-control" id="field_searchProfile" name="searchProfile" ng-model="vm.searchCriteria.searchProfileId" ng-options="searchProfile.id as searchProfile.id for searchProfile in vm.searchprofiles">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

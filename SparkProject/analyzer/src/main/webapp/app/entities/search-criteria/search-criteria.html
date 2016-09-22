@@ -1,0 +1,64 @@
+<div>
+    <h2 translate="analyzerApp.searchCriteria.home.title">Search Criteria</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="search-criteria.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="analyzerApp.searchCriteria.home.createLabel">
+                        Create new Search Criteria
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="analyzerApp.searchCriteria.keyWord">Key Word</span></th>
+                    <th><span translate="analyzerApp.searchCriteria.mustHaveWord">Must Have Word</span></th>
+                    <th><span translate="analyzerApp.searchCriteria.excludedWord">Excluded Word</span></th>
+                    <th><span translate="analyzerApp.searchCriteria.searchProfile">Search Profile</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="searchCriteria in vm.searchCriteria track by searchCriteria.id">
+                    <td><a ui-sref="search-criteria-detail({id:searchCriteria.id})">{{searchCriteria.id}}</a></td>
+                    <td>{{searchCriteria.keyWord}}</td>
+                    <td>{{searchCriteria.mustHaveWord}}</td>
+                    <td>{{searchCriteria.excludedWord}}</td>
+                    <td>
+                        <a ui-sref="search-profile-detail({id:searchCriteria.searchProfileId})">{{searchCriteria.searchProfileId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="search-criteria-detail({id:searchCriteria.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="search-criteria.edit({id:searchCriteria.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="search-criteria.delete({id:searchCriteria.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

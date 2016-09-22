@@ -1,0 +1,33 @@
+{
+	"analyzerApp": 
+	{
+		"searchCriteria": 
+		{
+			"home": 
+			{
+				"title": "Search Criteria",
+				"createLabel": "Dodaj Search Criteria",
+				"createOrEditLabel": "Dodaj lub edytuj: Search Criteria",
+				"search": "Search for Search Criteria"
+			},
+
+			"created": "A new Search Criteria is created with identifier {{ param }}",
+			"updated": "A Search Criteria is updated with identifier {{ param }}",
+			"deleted": "A Search Criteria is deleted with identifier {{ param }}",
+			"delete": 
+			{
+				"question": "Czy na pewno chcesz usunąć Search Criteria {{ id }}?"
+			},
+
+			"detail": 
+			{
+				"title": "Search Criteria"
+			},
+
+			"keyWord": "Key Word",
+			"mustHaveWord": "Must Have Word",
+			"excludedWord": "Excluded Word",
+			"searchProfile": "Search Profile"
+		}
+	}
+}

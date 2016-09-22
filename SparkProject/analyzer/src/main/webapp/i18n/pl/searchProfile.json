@@ -1,0 +1,31 @@
+{
+	"analyzerApp": 
+	{
+		"searchProfile": 
+		{
+			"home": 
+			{
+				"title": "Search Profiles",
+				"createLabel": "Dodaj Search Profile",
+				"createOrEditLabel": "Dodaj lub edytuj: Search Profile",
+				"search": "Search for Search Profile"
+			},
+
+			"created": "A new Search Profile is created with identifier {{ param }}",
+			"updated": "A Search Profile is updated with identifier {{ param }}",
+			"deleted": "A Search Profile is deleted with identifier {{ param }}",
+			"delete": 
+			{
+				"question": "Czy na pewno chcesz usunąć Search Profile {{ id }}?"
+			},
+
+			"detail": 
+			{
+				"title": "Search Profile"
+			},
+
+			"name": "Name",
+			"searchCriteria": "Search Criteria"
+		}
+	}
+}

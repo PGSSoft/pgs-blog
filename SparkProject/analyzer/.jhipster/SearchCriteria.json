@@ -1,0 +1,42 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "searchProfile",
+            "otherEntityName": "searchProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "keyWord",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "mustHaveWord",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "excludedWord",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        }
+    ],
+    "changelogDate": "20160429123138",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "search_criteria",
+    "pagination": "no"
+}

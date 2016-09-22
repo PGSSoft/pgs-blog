@@ -1,0 +1,15 @@
+version: '2'
+services:
+    analyzer-app:
+        image: analyzer
+        external_links:
+            - analyzer-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/analyzer?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    analyzer-mysql:
+        extends:
+            file: mysql.yml
+            service: analyzer-mysql

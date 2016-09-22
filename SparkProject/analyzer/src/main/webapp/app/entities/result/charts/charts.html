@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-11">
+            <canvas id="line" class="chart chart-line" chart-data="vm.data"
+                    chart-labels="vm.labels" chart-legend="true" chart-series="vm.series"
+                    chart-click="vm.onClick" >
+            </canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <select ng-model="vm.selectedProfile" ng-options="profile.id as profile.name for profile in vm.searchProfiles" class="form-control" ></select>
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" ng-model="vm.dateFrom" type="date">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" ng-model="vm.dateUntil" type="date">
+        </div>
+        <div class="col-xs-2">
+            <select class="form-control" ng-model="vm.scale">
+                <option value="YEARS">Years</option>
+                <option value="MONTHS">Months</option>
+                <option value="WEEKS">Weeks</option>
+                <option value="DAYS">Days</option>
+            </select>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+</div>

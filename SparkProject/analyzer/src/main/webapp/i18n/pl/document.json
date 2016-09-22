@@ -1,0 +1,26 @@
+{
+    "analyzerApp": {
+        "document" : {
+            "home": {
+                "title": "Documents",
+                "createLabel": "Dodaj Document",
+                "createOrEditLabel": "Dodaj lub edytuj: Document",
+                "search": "Search for Document"
+            },
+            "created": "A new Document is created with identifier {{ param }}",
+            "updated": "A Document is updated with identifier {{ param }}",
+            "deleted": "A Document is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Document {{ id }}?"
+            },
+            "detail": {
+                "title": "Document"
+            },
+            "url": "Url",
+            "content": "Content",
+            "creationDate": "Creation Date",
+            "updateDate": "Update Date",
+            "shuffle": "Losuj daty"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<div class="row">
+    <form>
+        <div class="col-xs-5">
+            <select class="form-control" id="searchProfile" ng-model="vm.selectedProfile" ng-options="profile.id as profile.name for profile in vm.searchProfiles">
+                <option value="">Pick search profile</option>
+            </select>
+        </div>
+        <div class="col-xs-5">
+            <select class="form-control" id="socialMedia" ng-model="vm.socialMedia"  ng-options="media as media for media in vm.socialMedias">
+                <option value="">Pick a social media</option>
+            </select>
+        </div>
+    </form>
+    <button class="btn btn-success" ng-click="vm.performCrawling()">
+        Perform crawling
+    </button>
+</div>

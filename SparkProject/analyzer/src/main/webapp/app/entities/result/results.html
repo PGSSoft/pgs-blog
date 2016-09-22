@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="analyzerApp.result.home.title">Results</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="result.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="analyzerApp.result.home.createLabel">
+                        Create new Result
+                    </span>
+                </button>
+                <button class="btn btn-primary" ui-sref="charts" >
+                    <span class="glyphicon glyphicon-signal"></span>
+                    <span  translate="analyzerApp.result.viewCharts">
+                        View charts
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="classification"><span translate="analyzerApp.result.classification">Classification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isTrainingData"><span translate="analyzerApp.result.isTrainingData">Is Training Data</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="documentId"><span translate="analyzerApp.result.document">Document</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="searchProfileId"><span translate="analyzerApp.result.searchProfile">Search Profile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in vm.results track by result.id">
+                    <td><a ui-sref="result-detail({id:result.id})">{{result.id}}</a></td>
+                    <td translate="{{'analyzerApp.Classification.' + result.classification}}">{{result.classification}}</td>
+                    <td>{{result.isTrainingData}}</td>
+                    <td>
+                        <a ui-sref="document-detail({id:result.documentId})">{{result.documentId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="search-profile-detail({id:result.searchProfileId})">{{result.searchProfileId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="result-detail({id:result.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="result.edit({id:result.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="result.delete({id:result.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

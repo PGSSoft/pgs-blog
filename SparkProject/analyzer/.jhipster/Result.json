@@ -1,0 +1,32 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "document",
+            "otherEntityName": "document",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "searchProfile",
+            "otherEntityName": "searchProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "Classification",
+            "fieldValues": "POSITIVE,NEUTRAL,NEGATIVE"
+        },
+        {
+            "fieldName": "isTrainingData",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20160504141218",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "result",
+    "pagination": "pagination"
+}

@@ -1,0 +1,55 @@
+<div>
+    <div class="row">
+        <div class="col-xs-6">
+            <p>Select file to import training data:</p>
+            <label class="btn btn-default btn-file">
+                Choose file<input type="file" nv-file-select="" uploader="trainingUploader" style="display: none;" />
+            </label>
+        </div>
+        <div class="col-xs-6">
+            <p>Select file to import validation data:</p>
+            <label class="btn btn-default btn-file">
+                Choose file<input type="file" nv-file-select="" uploader="validationUploader" style="display: none;" />
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                    <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                        <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="classification"><span>Classification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th><span>Document</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="result in vm.results track by result.id">
+                        <td><a ui-sref="result-detail({id:result.id})">{{result.id}}</a></td>
+                        <td translate="{{'analyzerApp.Classification.' + result.classification}}">{{result.classification}}</td>
+                        <td>
+                            <a ui-sref="document-detail({id:result.documentId})">{{result.documentId}}</a>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group flex-btn-group-container">
+                                <button class="btn btn-info btn-sm" ng-click="vm.performRating(result, 'POSITIVE')">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="hidden-xs hidden-sm">Positive</span>
+                                </button>
+                                <button class="btn btn-danger btn-sm" ng-click="vm.performRating(result, 'NEGATIVE')">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                    <span class="hidden-xs hidden-sm">Negative</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
+    </div>
+</div>

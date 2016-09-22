@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <div class="col-xs-12">
+            <div class="col-xs-3">
+                <label for="selectedProfile">Pick a profile</label>
+                <select id="selectedProfile" ng-model="vm.selectedProfile" ng-options="profile.id as profile.name for profile in vm.searchProfiles" class="form-control" ></select>
+            </div>
+        </div>
+        <div class="col-xs-12" ng-repeat="(job, description) in vm.possibleJobs">
+            <button class="btn btn-primary btn-margin"  ng-click="vm.executeJob(job)">{{job}}</button>
+            <span> -  {{description}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+target/
+
+.idea/
+*.iml
+
+#java specific
+*.class
+
+# eclipse specific files
+.settings/
+.classpath
+.project
+*.jpage
+
+*.ucls
+/bin/
+
+*.log

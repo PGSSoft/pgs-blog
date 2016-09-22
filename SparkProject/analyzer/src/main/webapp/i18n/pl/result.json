@@ -1,0 +1,26 @@
+{
+    "analyzerApp": {
+        "result" : {
+            "home": {
+                "title": "Results",
+                "createLabel": "Dodaj Result",
+                "createOrEditLabel": "Dodaj lub edytuj: Result",
+                "search": "Search for Result"
+            },
+            "created": "A new Result is created with identifier {{ param }}",
+            "updated": "A Result is updated with identifier {{ param }}",
+            "deleted": "A Result is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Result {{ id }}?"
+            },
+            "detail": {
+                "title": "Result"
+            },
+            "classification": "Classification",
+            "isTrainingData": "Is Training Data",
+            "document": "Document",
+            "searchProfile": "Search Profile",
+            "viewCharts": "Zobacz wykresy"
+        }
+    }
+}

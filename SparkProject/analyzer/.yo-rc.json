@@ -1,0 +1,32 @@
+{
+    "generator-jhipster": {
+        "jhipsterVersion": "3.1.0",
+        "baseName": "analyzer",
+        "packageName": "com.pgs.spark.bigdata",
+        "packageFolder": "com/pgs/spark/bigdata",
+        "serverPort": "8080",
+        "authenticationType": "session",
+        "hibernateCache": "ehcache",
+        "clusteredHttpSession": "no",
+        "websocket": "no",
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": "no",
+        "buildTool": "maven",
+        "enableSocialSignIn": false,
+        "rememberMeKey": "ffb9e4b9b20dd45107764112908196c3cd78cc3c",
+        "useSass": true,
+        "applicationType": "monolith",
+        "testFrameworks": [
+            "gatling"
+        ],
+        "jhiPrefix": "jhi",
+        "enableTranslation": true,
+        "nativeLanguage": "en",
+        "languages": [
+            "en",
+            "pl"
+        ]
+    }
+}
